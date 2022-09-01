@@ -10,8 +10,6 @@ import { RequestLoggerMiddleware } from './common/middlewares';
 import { configuration } from './config';
 import { ENVIRONMENTS } from './constants';
 
-require('newrelic');
-
 @Module({
   imports: [
     ApiModule,
