@@ -27,21 +27,11 @@ export class StudentServiceCaller {
 
   async updateStudent(
     id: string,
-    name: string,
-    surname: string,
-    birthdate: string,
-    gender: number,
-    classroom: number,
-    relationInfo: { name: string, phoneNumber: string, dagree: number },
+    classroom: string,
   ): Promise<any> {
     return lastValueFrom(
       this.httpService.put(`${this.url}student/${id}`, {
-        name,
-        surname,
-        birthdate,
-        gender,
         classroom,
-        relationInfo,
       }),
     ).then((response) => response.data)
       .catch((err) => { throw new BadRequestException({ ...err.response.data, microservice: 'student' }); });

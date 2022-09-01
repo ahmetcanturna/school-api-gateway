@@ -52,7 +52,13 @@ export class SchoolService {
       updatedApplication.relationInfo,
     );
 
-    return student;
+    const classes = ["A", "B", "C", "D"];
+    const randomClass = classes[Math.floor(Math.random()*classes.length)];
+    const classNumber = (new Date().getFullYear() - new Date(student.birthdate).getFullYear()) - 7;
+
+    const updatedStudent = await this.studentServiceCaller.updateStudent(student._id, classNumber + '/' +  randomClass);
+
+    return updatedStudent;
   }
 
   async rejectApplication(id: string) {
